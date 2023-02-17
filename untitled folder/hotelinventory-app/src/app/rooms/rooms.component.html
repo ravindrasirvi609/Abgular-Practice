@@ -5,7 +5,7 @@
 
   {{ rooms.AvailableRooms ?? "No Rooms" }}
   <div *ngIf="selectedrooms">
-<p>{{selectedrooms | json}}</p>
+    <p>{{ selectedrooms | json }}</p>
   </div>
   <div *ngIf="rooms?.AvailableRooms">
     <app-rooms-list
@@ -13,6 +13,9 @@
       (roomSelected)="select($event)"
     ></app-rooms-list>
   </div>
+</div>
+<div>
+  <button (click)="addRoom()">Add Room</button>
 </div>
 
 <button (click)="toggle()">toggle</button>
