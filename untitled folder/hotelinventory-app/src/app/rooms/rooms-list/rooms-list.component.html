@@ -1,0 +1,29 @@
+    <div>
+        <table>
+            <thead>
+              <tr>
+                <th>Index</th>
+                <th>Room Number</th>
+                <th>Room Type</th>
+                <th>Amenities</th>
+                <th>Price</th>
+                <th>Checkin Time</th>
+                <th>Checkout Time</th>
+                <th>Select room</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let rooms of rooms; let i=index  ">
+                <td>{{i+1}}</td>
+                <td>{{rooms.RoomNumber}}</td>
+                <td>{{rooms.RoomType| uppercase}}</td>
+                <td>{{rooms.amenities| titlecase}}</td>
+                <td>{{rooms.price| currency: 'INR'}}</td>
+                <td>{{rooms.CheckinTime| date: 'M/d/yy, h:mm a'}}</td>
+                <td>{{rooms.CheckoutTime| date: 'M/d/yy, h:mm a'}}</td>
+                <td> <button (click)="seLectroom(rooms)">Select Room</button></td>
+              </tr>
+            </tbody>
+          </table>
+          
+    </div>
