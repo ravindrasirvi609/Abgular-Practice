@@ -1,7 +1,8 @@
-    <div>
-        <table>
-            <thead>
-              <tr>
+<h2 class="mb-4" style="color: #6c757d;">{{title}}</h2>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
                 <th>Index</th>
                 <th>Room Number</th>
                 <th>Room Type</th>
@@ -9,21 +10,22 @@
                 <th>Price</th>
                 <th>Checkin Time</th>
                 <th>Checkout Time</th>
-                <th>Select room</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let rooms of rooms; let i=index  ">
+                <th>Select Room</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let room of rooms; let i=index">
                 <td>{{i+1}}</td>
-                <td>{{rooms.RoomNumber}}</td>
-                <td>{{rooms.RoomType| uppercase}}</td>
-                <td>{{rooms.amenities| titlecase}}</td>
-                <td>{{rooms.price| currency: 'INR'}}</td>
-                <td>{{rooms.CheckinTime| date: 'M/d/yy, h:mm a'}}</td>
-                <td>{{rooms.CheckoutTime| date: 'M/d/yy, h:mm a'}}</td>
-                <td> <button (click)="seLectroom(rooms)">Select Room</button></td>
-              </tr>
-            </tbody>
-          </table>
-          
-    </div>
+                <td>{{room.RoomNumber}}</td>
+                <td style="text-transform: uppercase;">{{room.RoomType}}</td>
+                <td style="text-transform: capitalize;">{{room.amenities}}</td>
+                <td>{{room.price | currency: 'INR'}}</td>
+                <td>{{room.CheckinTime | date: 'M/d/yy, h:mm a'}}</td>
+                <td>{{room.CheckoutTime | date: 'M/d/yy, h:mm a'}}</td>
+                <td>
+                    <button (click)="seLectroom(room)" class="btn btn-success btn-sm">Select</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

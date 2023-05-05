@@ -1,0 +1,9 @@
+{
+     "gitlens.worktrees.defaultLocation": "https://github.com/ravindrasirvi609/Abgular-Practice",
+     "css.customData": [
+          "https://github.com/ravindrasirvi609/Abgular-Practice"
+     ],
+     "html.customData": [
+          "https://github.com/ravindrasirvi609/Abgular-Practice"
+     ]
+}

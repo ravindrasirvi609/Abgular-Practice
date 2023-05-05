@@ -1,21 +1,28 @@
-<h3>Wellcome the {{ hotelName }}</h3>
-<div [hidden]="hiderooms">
-  number of rooms:
-  <div [innerText]="numberOfRomms"></div>
+<!-- <h3 class="mb-4">Welcome to {{ hotelName }}</h3> -->
+<app-header></app-header>
 
-  {{ rooms.AvailableRooms ?? "No Rooms" }}
-  <div *ngIf="selectedrooms">
-    <p>{{ selectedrooms | json }}</p>
+<div [hidden]="hiderooms" class="mb-4">
+  <p class="mb-2">Number of rooms:</p>
+  <div [innerText]="numberOfRomms" class="mb-3"></div>
+  <div class="mb-4">
+    <button (click)="addRoom()" class="btn btn-primary">Add Room</button>
   </div>
-  <div *ngIf="rooms?.AvailableRooms">
+  <div *ngIf="rooms.AvailableRooms; else noRooms" class="mb-3">
     <app-rooms-list
       [rooms]="roomlist"
+      [title]="title"
       (roomSelected)="select($event)"
+      class="mb-3"
     ></app-rooms-list>
   </div>
-</div>
-<div>
-  <button (click)="addRoom()">Add Room</button>
+<ng-template #noRooms>
+<p class="text-muted">No rooms available.</p>
+</ng-template>
+
+  <div *ngIf="selectedrooms" class="mb-3">
+    <p class="mb-2">Selected rooms:</p>
+    <p>{{ selectedrooms | json }}</p>
+  </div>
 </div>
 
-<button (click)="toggle()">toggle</button>
+<button (click)="toggle()" class="btn btn-secondary">Toggle</button>

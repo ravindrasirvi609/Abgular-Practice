@@ -4,6 +4,10 @@ import {
   EventEmitter,
   Input,
   Output,
+  OnInit,
+  OnChanges,
+  SimpleChanges,
+  DoCheck
 } from '@angular/core';
 import { RoomList } from '../rooms';
 
@@ -13,9 +17,23 @@ import { RoomList } from '../rooms';
   styleUrls: ['./rooms-list.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RoomsListComponent {
+export class RoomsListComponent implements OnInit,  OnChanges, DoCheck  {
+  ngDoCheck(): void {
+    console.log("on changes is Called");
+    
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['title']){
+      this.title = changes['title'].currentValue.toUpperCase();
+    }
+}
+  ngOnInit(): void {
+    
+  }
   @Input() rooms: RoomList[] = [];
+  @Input() title = 'Room List ';
   @Output() roomSelected = new EventEmitter<RoomList>();
+
 
   seLectroom(rooms: RoomList) {
     this.roomSelected.emit(rooms);

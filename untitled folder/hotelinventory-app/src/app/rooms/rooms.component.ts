@@ -1,16 +1,28 @@
-import { Component } from '@angular/core';
+import {
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  OnInit,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
 import { Room, RoomList } from './rooms';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.css'],
 })
-export class RoomsComponent {
+export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
+  
   hotelName: string = 'Hiltop Hotel';
   numberOfRomms = 10;
   hiderooms = false;
   selectedrooms?: RoomList;
+  @ViewChild(HeaderComponent) headerComponent?: HeaderComponent;
+  @ViewChildren(HeaderComponent ) headerChildren?: QueryList<HeaderComponent>
 
   rooms: Room = {
     TotalRooms: 20,
@@ -47,9 +59,12 @@ export class RoomsComponent {
       CheckoutTime: new Date('12-Nov-2023'),
     },
   ];
+  title = ' this is the title of the the  hotel inventry ';
 
   toggle() {
     this.hiderooms = !this.hiderooms;
+    this.title =
+      ' this is the title of the hotel bla bla bla bla bla bla bla bla bla bla';
   }
   select(rooms: RoomList) {
     this.selectedrooms = rooms;
@@ -66,5 +81,18 @@ export class RoomsComponent {
     };
     // this.roomlist.push(room)
     this.roomlist = [...this.roomlist, room];
+  }
+  ngOnInit(): void {}
+
+  ngAfterViewInit(): void {
+    if (this.headerComponent) {
+      this.headerComponent.title = 'Room Viewer';
+    }
+    if(this.headerChildren){
+    console.log(this.headerChildren.last.title = "hehy");
+    }
+  }
+  ngAfterViewChecked(): void {
+    throw new Error('Method not implemented.');
   }
 }
