@@ -16,13 +16,12 @@ import { HeaderComponent } from '../header/header.component';
   styleUrls: ['./rooms.component.css'],
 })
 export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
-  
   hotelName: string = 'Hiltop Hotel';
   numberOfRomms = 10;
   hiderooms = false;
   selectedrooms?: RoomList;
   @ViewChild(HeaderComponent) headerComponent?: HeaderComponent;
-  @ViewChildren(HeaderComponent ) headerChildren?: QueryList<HeaderComponent>
+  @ViewChildren(HeaderComponent) headerChildren?: QueryList<HeaderComponent>;
 
   rooms: Room = {
     TotalRooms: 20,
@@ -88,8 +87,8 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
     if (this.headerComponent) {
       this.headerComponent.title = 'Room Viewer';
     }
-    if(this.headerChildren){
-    console.log(this.headerChildren.last.title = "hehy");
+    if (this.headerChildren) {
+      console.log((this.headerChildren.last.title = 'hehy'));
     }
   }
   ngAfterViewChecked(): void {
